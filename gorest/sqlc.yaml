@@ -1,0 +1,16 @@
+version: '2'
+cloud:
+  project: '01HGESZMXM2W0EA9420XGF2WJY'
+sql:
+- schema: schema.sql
+  queries: query.sql
+  engine: postgresql
+  database:
+    managed: true
+  rules:
+  - sqlc/db-prepare
+  gen:
+    go:
+      package: "db"
+      out: "db"
+      sql_package: "pgx/v5"
